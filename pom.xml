@@ -34,6 +34,7 @@
         <spring.boot.version>2.2.7.RELEASE</spring.boot.version>
         <jackson.version>2.11.2</jackson.version>
         <lombok.version>1.18.12</lombok.version>
+        <native-lib-loader.version>2.3.5</native-lib-loader.version>
     </properties>
 
     <profiles>
@@ -103,6 +104,11 @@
             <artifactId>spring-boot-starter-validation</artifactId>
             <version>${spring.boot.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.scijava</groupId>
+            <artifactId>native-lib-loader</artifactId>
+            <version>${native-lib-loader.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -142,5 +148,12 @@
                 <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
             </plugins>
         </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+            </plugin>
+        </plugins>
+
     </build>
 </project>
