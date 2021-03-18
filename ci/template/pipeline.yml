@@ -57,6 +57,7 @@ resources:
 - name: source
   type: git
   icon: gitlab
+  check_every: 1m
   webhook_token: ((my-vault:ci.resource-webhook-token))
   source:
     branch: ((profile))
