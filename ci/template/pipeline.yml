@@ -59,7 +59,7 @@ resources:
   icon: github
   source:
     branch: ((profile))
-    uri: git@github.com:bpfaas/lib-java-bp-common.git
+    uri: git@git.bpfaas.com:bpfaas/libs/lib-java-bp-common.git
     private_key: ((git-privateKey))
     fetch_tags: true
 
