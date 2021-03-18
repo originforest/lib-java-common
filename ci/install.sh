@@ -7,7 +7,7 @@
 
 PROFILE=dev
 # the name of project.
-PROJECT_NAME=libs-java-bp-common
+PROJECT_NAME=lib-java-bp-common
 # the concourse info.
 CI_TARGET=main
 CI_TEAM=main
@@ -21,7 +21,7 @@ fly -t ${CI_TARGET} set-pipeline \
   -p ${PROJECT_NAME} \
   -v VAULT_ADDR="${BPFAAS_CI_VAULT_ADDR}" \
   -v VAULT_TOKEN="${BPFAAS_CI_VAULT_TOKEN}" \
-  -v git-privateKey="$(cat ~/.ssh/bpfaas/bpfaas-lib-bp-common)" \
+  -v git-privateKey="$(cat ~/.ssh/bpfaas/${PROJECT_NAME})" \
   -l ./vars-${PROFILE}.yaml \
   -c ./template/pipeline.yml \
   --team=${CI_TEAM}

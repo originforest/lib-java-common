@@ -5,4 +5,4 @@ Envs:
   - `BPFAAS_CI_VAULT_TOKEN`: vault token.
 
 Files:
-  - `~/.ssh/bpfaas/bpfaas-lib-bp-common`: git private key.
+  - `~/.ssh/bpfaas/lib-java-bp-common`: git private key.

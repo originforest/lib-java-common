@@ -54,9 +54,10 @@ resource_types:
 ###############################
 resources:
 # 项目源码.
-- name: service-source
+- name: source
   type: git
-  icon: github
+  icon: gitlab
+  webhook_token: ((my-vault:ci.resource-webhook-token))
   source:
     branch: ((profile))
     uri: git@git.bpfaas.com:bpfaas/libs/lib-java-bp-common.git
@@ -67,17 +68,17 @@ resources:
 # jobs.
 ###############################
 jobs:
-- name: build-service
+- name: build
   interruptible: true # 允许立即abort
   plan:
   # 获取代码.
-  - get: service-source
+  - get: source
     timeout: ((step-timeout))
     trigger: true
   # 编译.
-  - task: build-and-deploy
+  - task: build
     timeout: ((task-timeout))
-    file: service-source/ci/template/task-build.yml
+    file: source/ci/template/task-build.yml
     vars:
       <<: *registry-var
       <<: *nexus-var

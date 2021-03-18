@@ -16,7 +16,7 @@ run:
   args:
   - "-c"
   - |
-    cd service-source
+    cd source
     sed -i 's/<profiles>/<\!\-\-profiles>/' pom.xml
     sed -i 's/<\/profiles>/<\/profiles\-\->/' pom.xml
     mvn clean deploy \
@@ -27,6 +27,6 @@ run:
       "-Drepository.password=((nexus-password))" \
       "-DaltDeploymentRepository=remote-repository-snapshot::default::((nexus-snapshotUrl))"
 inputs:
-- name: service-source
+- name: source
 outputs:
 - name: service-package

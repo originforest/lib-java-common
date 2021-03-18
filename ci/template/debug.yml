@@ -16,9 +16,9 @@ run:
   args:
   - "-c"
   - |
-    cd service-source
+    cd source
     mvn clean package -Drevision.profile="-SNAPSHOT"
     cd ..
-    mv service-source/target service-package
+    mv source/target service-package
     rm -rf service-package/*-sources.jar
-    cp -rf service-source/ci/pom-snapshot.xml service-package/pom.xml
+    cp -rf source/ci/pom-snapshot.xml service-package/pom.xml
