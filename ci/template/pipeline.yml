@@ -60,7 +60,7 @@ resources:
   webhook_token: ((my-vault:ci.resource-webhook-token))
   source:
     branch: ((profile))
-    uri: git@git.bpfaas.com:bpfaas/platform-lib/lib-java-bp-common.git
+    uri: git@git.bpfaas.com:bpfaas/platform-lib/lib-java-common.git
     private_key: ((git-privateKey))
     fetch_tags: true
 

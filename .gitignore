@@ -1,30 +1,17 @@
-
 .DS_Store
-~$*.doc
-~$*.docx
-~$*.ppt
-~$*.pptx
 
 # IDE
 #
 .vscode
-.idea
-*.iml
-*.ipr
-*.iws
 
 # node.js
 #
+.nyc_output
 node_modules
 npm-debug.log
 package-lock.json
 
-
 # java
 #
 target
-bin
-.settings
-.project
-.classpath
-.factorypath
+.idea

@@ -7,7 +7,7 @@
 
 PROFILE=dev
 # the name of project.
-PROJECT_NAME=lib-java-bp-common
+PROJECT_NAME=lib-java-common
 # the concourse info.
 CI_TARGET=main
 CI_TEAM=main
