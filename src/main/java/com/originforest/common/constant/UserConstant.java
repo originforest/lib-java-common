@@ -11,12 +11,22 @@ public final class UserConstant {
     /**
      * 用户ID标识
      */
-    public static final String HEADER_KEY_USER_ID = "uid";
+    public static final String HEADER_KEY_USER_ID = "of-uid";
 
     /**
      * 租户ID标识
      */
-    public static final String HEADER_KEY_TENANT_ID = "tid";
+    public static final String HEADER_KEY_TENANT_ID = "of-tid";
+
+    /**
+     * 用户类型
+     */
+    public static final String HEADER_KEY_USER_TYPE = "of-ut";
+
+    /**
+     * 用户角色集合
+     */
+    public static final String HEADER_KEY_USER_ROLES = "of-roles";
 
     /**
      * JWT签名
