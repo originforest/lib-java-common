@@ -26,7 +26,7 @@ run:
       "-Drepository.username=((nexus-username))" \
       "-Drepository.password=((nexus-password))" \
       "-DaltDeploymentRepository=remote-repository-snapshot::default::((nexus-snapshotUrl))"
-inputs:
+inputs: 
 - name: source
 outputs:
 - name: service-package
