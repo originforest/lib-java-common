@@ -1,7 +1,7 @@
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.originforest/common/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.originforest/common/)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/build.max/common/badge.svg)](https://maven-badges.herokuapp.com/maven-central/build.max/common/)
 [![License](https://img.shields.io/github/license/originforest/lib-java-common)](https://opensource.org/licenses/MIT)
 
-Common library in originforest
+Common library in MAXBUILD
 
 - [Setup](#setup)
 - [ErrorCode](#errorcode)
@@ -24,9 +24,9 @@ Common library in originforest
 
 ```html
 <dependency>
-    <groupId>com.originforest</groupId>
+    <groupId>build.max</groupId>
     <artifactId>common</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.1.RELEASE</version>
 </dependency>
 ```
 
@@ -35,7 +35,7 @@ Common library in originforest
 定义所用到的 errorCode
 
 ```java
-import com.originforest.common.web.*;
+
 
 new Msg(ErrorCode.OK);
 new Msg(ErrorCode.UNAUTHORIZE);
@@ -52,7 +52,7 @@ new Msg(ErrorCode.UNAUTHORIZE);
 _在RestController中返回此对象将构造适当的http报文返回给客户端._
 
 ```java
-import com.originforest.common.web.*;
+
 
 new Response().setBody(...);
 new Response().setHeader("Content-Type", "Jsonxxx");
@@ -66,7 +66,7 @@ new Response().setStatusCode(200);
 _在RestController中返回此对象将按照消息包格式返回数据给客户端._
 
 ```java
-import com.originforest.common.web.*;
+
 
 // To create a HashMap data.
 new Msg<Object>();   //  MsgObject === Msg<Object>
@@ -89,27 +89,27 @@ new Msg(new Object(...));
 
 | 异常类名 | 说明 |
 | - | - |
-| com.originforest.`OfException` | of系统一般异常基类 |
-| com.originforest.`OfRuntimeException` | of系统runtime异常基类 |
+| build.max.`OfException` | of系统一般异常基类 |
+| build.max.`OfRuntimeException` | of系统runtime异常基类 |
 
 OfException 派生类
 
 
 | 异常类名 | 说明 |
 | - | - |
-| com.originforest.`OfDBException` | 数据库异常 |
-| com.originforest.`OfExecuteCommandException` | command执行错误异常 |
-| com.originforest.`OfJsonException` | json相关错误异常 |
+| build.max.`OfDBException` | 数据库异常 |
+| build.max.`OfExecuteCommandException` | command执行错误异常 |
+| build.max.`OfJsonException` | json相关错误异常 |
 
 OfRuntimeException 派生类
 
 
 | 异常类名 | 说明 |
 | - | - |
-| com.originforest.`OfErrSubcodeException` | 附带某个具体业务错误码(subCode)异常 |
-| com.originforest.`OfMsgException` | 消息处理错误相关异常 |
-| com.originforest.`OfNotFoundException` | NotFound异常 |
-| com.originforest.`OfRawMsgException` | 在restController中抛出此异常, 可以根据设置的 httpStatusCode 并返回http报文 |
+| build.max.`OfErrSubcodeException` | 附带某个具体业务错误码(subCode)异常 |
+| build.max.`OfMsgException` | 消息处理错误相关异常 |
+| build.max.`OfNotFoundException` | NotFound异常 |
+| build.max.`OfRawMsgException` | 在restController中抛出此异常, 可以根据设置的 httpStatusCode 并返回http报文 |
 
 ## Common Constant
 
@@ -118,8 +118,8 @@ OfRuntimeException 派生类
 
 | 常量名 | 说明 |
 | - | - |
-| com.originforest.common.constant.DBConstant.`COL_DEFINITION_ID` | "char(32)", 可用定义id数据库字段类型 |
-| com.originforest.common.constant.DBConstant.`COL_DEFINITION_ENUM` | "varchar(20)", 可用定义枚举,状态等数据库字段类型 |
+| DBConstant.`COL_DEFINITION_ID` | "char(32)", 可用定义id数据库字段类型 |
+| DBConstant.`COL_DEFINITION_ENUM` | "varchar(20)", 可用定义枚举,状态等数据库字段类型 |
 
 ## Utility
 
@@ -130,7 +130,7 @@ OfRuntimeException 派生类
 操作系统命令执行工具
 
 ```java
-import com.originforest.common.utils.*;
+
 
 ExecResult result;
 
@@ -152,7 +152,7 @@ CommandUtils.exec("cat /proc/cpuinfo",
 通用加密工具
 
 ```java
-import com.originforest.common.utils.*;
+
 
 CryptUtils.sha1("xxxxxxxxxxxx");
 CryptUtils.sha256("xxxxxxxxxxxx");
@@ -163,7 +163,7 @@ CryptUtils.sha256("xxxxxxxxxxxx");
 时间工具, 用于将时间与utc时间进行转换.
 
 ```java
-import com.originforest.common.utils.*;
+
 
 // 将本地时间转换为utc字符串.
 DateUtils.date2utcstr(new Date());  // MMddHHmmssSSS
@@ -177,7 +177,7 @@ DateUtils.utcstr2date("2020110501");  // 返回本地时间对象.
 文件工具; 进行本地文件操作; 以下举例部分接口.
 
 ```java
-import com.originforest.common.utils.*;
+
 
 // 保证指定的目录存在.
 FileUtils.assureDir("/xxx/xxx");
@@ -197,7 +197,7 @@ FileUtils.writeFile("/xxx/xx.md", "content");
 json序列化工具
 
 ```java
-import com.originforest.common.utils.*;
+
 
 // 解析.
 Object obj = JsonUtils.parse("{}");
@@ -211,7 +211,7 @@ String str = JsonUtils.stringify(obj);
 路径工具, 可以解决不同操作系统路径分隔符不同等问题
 
 ```java
-import com.originforest.common.utils.*;
+
 
 // join路径, 生成: root/dir1/dir2
 String path = PathUtils.join("root", "dir1/",  "dir2");
@@ -222,7 +222,7 @@ String path = PathUtils.join("root", "dir1/",  "dir2");
 字符串工具; 用于处理字符串的一些常规简化操作.
 
 ```java
-import com.originforest.common.utils.*;
+
 
 // 判断字符串是否是 null或空字符串.
 StringUtils.isEmpty("");
@@ -233,7 +233,7 @@ StringUtils.isEmpty("");
 使用示例
 
 ```java
-import com.originforest.common.utils.*;
+
 
 // 生成一个新的id.
 IdentityUtils.nextId();

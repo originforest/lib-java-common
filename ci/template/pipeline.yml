@@ -3,12 +3,27 @@
 ###############################
 var_sources:
 - name: my-vault
-  type: vault
+  type: dummy
   config:
-    url: ((VAULT_ADDR))
-    # ca_cert: ((vault_ca))
-    insecure_skip_verify: true
-    client_token: ((VAULT_TOKEN))
+    vars:
+      ci:
+        resource-webhook-token: ((resource-webhook-token))
+        registry-url: ((registry-url))
+        registry-url-internal: ((registry-url-internal))
+        registry-username: ((registry-username))
+        registry-password: ((registry-password))
+        registry-mirror: ((registry-mirror))
+        nexus-username: ((nexus-username))
+        nexus-password: ((nexus-password))
+        nexus-url: ((nexus-url))
+        k8s-url: ((k8s-url))
+        k8s-ca-base64: ((k8s-ca-base64))
+        k8s-ca: ((k8s-ca))
+        k8s-admin-cert-base64: ((k8s-admin-cert-base64))
+        k8s-admin-cert: ((k8s-admin-cert))
+        k8s-admin-key-base64: ((k8s-admin-key-base64))
+        k8s-admin-key: ((k8s-admin-key))
+        k8s-token: ((k8s-token))
 
 ###############################
 # reference.
@@ -23,11 +38,12 @@ registry-source-private: &registry-source-private
   username: ((my-vault:ci.registry-username))
   password: ((my-vault:ci.registry-password))
   insecure_registries: 
-  - ((my-vault:ci.registry-url))
+  - ((my-vault:ci.registry-url-internal))
   official_registry: ((registry_mirror))
 # 传递给 task的registry信息.
 registry-var: &registry-var
   registry-url: ((my-vault:ci.registry-url))
+  registry-url-internal: ((my-vault:ci.registry-url-internal))
   registry-username: ((my-vault:ci.registry-username))
   registry-password: ((my-vault:ci.registry-password))
   registry-mirror: http://((registry_mirror))/
@@ -45,7 +61,7 @@ resource_types:
   type: docker-image
   source:
     <<: *registry-source-private
-    repository: ((my-vault:ci.registry-url))/concourse-fly-resource
+    repository: ((my-vault:ci.registry-url-internal))/concourse-fly-resource
     tag: 2.0.1
 
 ###############################
@@ -56,7 +72,7 @@ resources:
 - name: source
   type: git
   icon: gitlab
-  check_every: 1m
+  check_every: 9999h
   webhook_token: ((my-vault:ci.resource-webhook-token))
   source:
     branch: ((profile))

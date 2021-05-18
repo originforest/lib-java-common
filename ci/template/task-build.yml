@@ -5,12 +5,12 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: ((registry-url))/maven
+    repository: ((registry-url-internal))/maven
     tag: 0.0.5
     username: ((registry-username))
     password: ((registry-password))
     insecure_registries: 
-    - ((registry-url))
+    - ((registry-url-internal))
 run:
   path: /bin/sh
   args:

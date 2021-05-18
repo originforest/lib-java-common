@@ -16,3 +16,4 @@ package-lock.json
 target
 .idea
 of-common.iml
+bin

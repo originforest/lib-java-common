@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.originforest</groupId>
+    <groupId>build.max</groupId>
     <artifactId>common</artifactId>
     <packaging>jar</packaging>
     <version>${revision}${revision.profile}</version>
@@ -10,18 +10,36 @@
     <name>common</name>
     <url>https://github.com/originforest/lib-java-common.git</url>
     <description>The common libraries.</description>
+    <licenses>
+        <license>
+            <name>The MIT License</name>
+            <url>https://opensource.org/licenses/mit/</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
     <scm>
         <url>https://github.com/originforest/lib-java-common.git</url>
         <connection>https://github.com/originforest/lib-java-common.git</connection>
     </scm>
+    <developers>
+        <developer>
+            <name>brian</name>
+            <id>brainpoint</id>
+            <email>bpoint.lee@live.com</email>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <timezone>+8</timezone>
+        </developer>
+    </developers>
 
     <properties>
         <revision>0.0.1</revision>
-        <revision.profile>-SNAPSHOT</revision.profile>
-        <repository.snapshotId>snapshots</repository.snapshotId>
-        <repository.snapshotUrl>http://dev.bpfaas.com:38082/repository/bpfaas-snapshot/</repository.snapshotUrl>
-        <repository.releaseId>releases</repository.releaseId>
-        <repository.releaseUrl>http://dev.bpfaas.com:38082/repository/bpfaas-release/</repository.releaseUrl>
+        <revision.profile>.RELEASE</revision.profile>
+        <repository.snapshotId>ossrh</repository.snapshotId>
+        <repository.snapshotUrl>https://s01.oss.sonatype.org/content/repositories/snapshots/</repository.snapshotUrl>
+        <repository.releaseId>ossrh</repository.releaseId>
+        <repository.releaseUrl>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</repository.releaseUrl>
 
         <!-- Project revision -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -34,7 +52,6 @@
         <spring.boot.version>2.2.7.RELEASE</spring.boot.version>
         <jackson.version>2.11.2</jackson.version>
         <lombok.version>1.18.12</lombok.version>
-        <native-lib-loader.version>2.3.5</native-lib-loader.version>
     </properties>
 
     <profiles>
@@ -54,6 +71,39 @@
                                 <phase>package</phase>
                                 <goals>
                                     <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.9.1</version>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <tags>
+                                <tag>
+                                    <name>date.</name>
+                                </tag>
+                            </tags>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
                                 </goals>
                             </execution>
                         </executions>
