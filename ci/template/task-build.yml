@@ -20,7 +20,7 @@ run:
     sed -i 's/<profiles>/<\!\-\-profiles>/' pom.xml
     sed -i 's/<\/profiles>/<\/profiles\-\->/' pom.xml
     mvn clean deploy \
-      "-Drevision.profile=-SNAPSHOT" \
+      "-Dchangelist=-SNAPSHOT" \
       "-Drepository.url=((nexus-url))" \
       "-Drepository.snapshotUrl=((nexus-snapshotUrl))" \
       "-Drepository.username=((nexus-username))" \

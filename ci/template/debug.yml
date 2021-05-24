@@ -17,7 +17,7 @@ run:
   - "-c"
   - |
     cd source
-    mvn clean package -Drevision.profile="-SNAPSHOT"
+    mvn clean package -Dchangelist="-SNAPSHOT"
     cd ..
     mv source/target service-package
     rm -rf service-package/*-sources.jar
