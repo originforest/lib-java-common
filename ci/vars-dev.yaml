@@ -1,4 +1,6 @@
 
+sh-ci-team: main-dep
+
 registry_mirror: hub-mirror.c.163.com
 
 # serivce parameters.
