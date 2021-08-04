@@ -51,7 +51,7 @@
         <!-- Dependency Versions -->
         <spring.boot.version>2.2.7.RELEASE</spring.boot.version>
         <jackson.version>2.11.2</jackson.version>
-        <lombok.version>1.18.12</lombok.version>
+        <lombok.version>1.18.20</lombok.version>
     </properties>
 
     <profiles>

@@ -19,9 +19,22 @@ public class OfRawMsgException extends OfRuntimeException {
   
   @Getter
   private final int httpStatusCode;
+  /**
+   * 响应内容，当body不为null时返回
+   */
+  private Object body;
 
   public OfRawMsgException(String message, int httpStatusCode) {
     super(message);
     this.httpStatusCode = httpStatusCode;
   }
+
+  public Object getBody() {
+    return body;
+  }
+
+  public void setBody(Object body) {
+    this.body = body;
+  }
+
 }
